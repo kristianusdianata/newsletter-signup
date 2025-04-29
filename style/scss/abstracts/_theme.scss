@@ -1,0 +1,65 @@
+@use "sass:map";
+@use "./variables" as *;
+
+/*
+-------------------------------------------------
+    Theme color
+-------------------------------------------------
+*/
+$themeColor: (
+  background: map.get($color, white),
+  foreground: map.get($color, blue-800),
+  primary: map.get($color, blue-800),
+  primary-foreground: map.get($color, white),
+  danger: map.get($color, red),
+);
+/*
+-------------------------------------------------
+    Theme color end
+-------------------------------------------------
+*/
+
+/*
+-------------------------------------------------
+    Theme size
+-------------------------------------------------
+*/
+$themeSize: (
+  card: 55rem,
+  card--sm: 25rem,
+  notification: 29.5rem,
+  notification--sm: 25rem,
+);
+/*
+-------------------------------------------------
+    Theme size end
+-------------------------------------------------
+*/
+
+/*
+-------------------------------------------------
+    Theme font size
+-------------------------------------------------
+*/
+$themeFontsize: (
+  // -------- Base --------
+  base-h1: map.get($fontSize, 6xl),
+  base-h1--sm: map.get($fontSize, 4xl),
+  base-p: map.get($fontSize, md),
+  base-p--sm: map.get($fontSize, sm),
+  base-button: map.get($fontSize, md),
+  base-button--sm: map.get($fontSize, sm),
+  base-label: map.get($fontSize, xs),
+  base-input: map.get($fontSize, md),
+  base-input--sm: map.get($fontSize, sm),
+  // -------- Base end --------
+  // -------- Card --------
+  card-list: map.get($fontSize, md),
+  card-list-sm: map.get($fontSize, sm),
+  // -------- Card end --------
+);
+/*
+-------------------------------------------------
+    Theme  font size end
+-------------------------------------------------
+*/

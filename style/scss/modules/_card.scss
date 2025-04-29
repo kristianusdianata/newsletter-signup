@@ -1,0 +1,129 @@
+@use "sass:map";
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/theme" as *;
+
+.card__wrapper {
+  display: none;
+
+  &.active {
+    display: block;
+    overflow: hidden;
+  }
+}
+
+.card {
+  max-inline-size: map.get($themeSize, card);
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: center;
+  padding: map.get($spacing, lg);
+
+  @media only screen and (width < 768px) {
+    & {
+      max-inline-size: map.get($themeSize, card--sm);
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+      overflow: hidden;
+    }
+  }
+
+  @media only screen and (width <= 450px) {
+    & {
+      max-inline-size: 100%;
+      min-block-size: 100vh;
+    }
+  }
+
+  .card__img {
+    grid-column: 2;
+    grid-row: 1;
+    overflow: hidden;
+    border-radius: map.get($radius, xl);
+
+    @media only screen and (width < 768px) {
+      & {
+        inline-size: 100%;
+        border-radius: 0px;
+      }
+    }
+
+    img {
+      display: block;
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .card__content {
+    grid-column: 1;
+    grid-row: 1;
+    margin-inline: map.get($spacing, lg) map.get($spacing, 3xl);
+
+    @media only screen and (width < 768px) {
+      & {
+        margin-block: map.get($spacing, 2xl);
+      }
+    }
+
+    .title {
+      margin-block-end: map.get($spacing, lg);
+    }
+
+    ul.list {
+      display: flex;
+      flex-direction: column;
+      row-gap: map.get($spacing, sm);
+      color: map.get($themeColor, foreground);
+      font-size: map.get($themeFontsize, card-list);
+      margin-block-start: map.get($spacing, lg);
+
+      @media only screen and (width < 768px) {
+        & {
+          font-size: map.get($themeFontsize, card-list-sm);
+        }
+      }
+
+      li.list__item {
+        display: flex;
+        flex-direction: row;
+        column-gap: map.get($spacing, md);
+        align-items: center;
+      }
+    }
+
+    form {
+      div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-block-start: map.get($spacing, 2xl);
+
+        label.email__label {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        input.email__input {
+          grid-column: 1 / span 2;
+          grid-row: 2;
+          margin-block-start: map.get($spacing, sm);
+        }
+
+        span.error-message {
+          @include font-roboto(700);
+          font-size: map.get($themeFontsize, base-label);
+          color: map.get($themeColor, danger);
+          grid-column: 2;
+          grid-row: 1;
+          text-align: end;
+        }
+      }
+
+      button.submit__button {
+        margin-block-start: map.get($spacing, lg);
+      }
+    }
+  }
+}

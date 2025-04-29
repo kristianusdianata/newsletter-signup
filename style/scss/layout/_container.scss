@@ -1,0 +1,12 @@
+.container {
+  max-inline-size: 1440px;
+  min-block-size: 100vh;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (width < 768px) {
+    & {
+      max-inline-size: 767px;
+    }
+  }
+}

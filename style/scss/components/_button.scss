@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../abstracts/theme" as *;
+
+.primary__button {
+  background-color: map.get($themeColor, primary);
+  color: map.get($themeColor, primary-foreground);
+
+  &:hover {
+    background: linear-gradient(to right, #ff527b, #ff6a3a);
+    box-shadow: hsl(4, 100%, 67%) 0px 22px 25px -13px;
+  }
+}

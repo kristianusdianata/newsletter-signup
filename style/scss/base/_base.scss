@@ -1,0 +1,86 @@
+@use "sass:map";
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/theme" as *;
+
+html {
+  font-size: 16px;
+
+  @media only screen and (width >= 768px) and (width < 992px) {
+    & {
+      font-size: 13.25px;
+    }
+  }
+}
+
+body {
+  @include font-roboto;
+  display: flex;
+  justify-content: center;
+  background-color: map.get($color, blue-700);
+}
+
+h1 {
+  @include font-roboto(700);
+  font-size: map.get($themeFontsize, base-h1);
+  color: map.get($themeColor, foreground);
+  line-height: 1;
+
+  @media only screen and (width < 768px) {
+    & {
+      font-size: map.get($themeFontsize, base-h1--sm);
+    }
+  }
+}
+
+p {
+  @include font-roboto;
+  font-size: map.get($themeFontsize, base-p);
+  line-height: 1.5;
+  color: map.get($themeColor, foreground);
+
+  @media only screen and (width < 768px) {
+    & {
+      font-size: map.get($themeFontsize, base-p--sm);
+    }
+  }
+}
+
+label {
+  @include font-roboto(700);
+  font-size: map.get($themeFontsize, base-label);
+}
+
+input {
+  border: 1px solid map.get($color, grey);
+  font-size: map.get($themeFontsize, base-input);
+  padding: map.get($spacing, md);
+  border-radius: map.get($radius, lg);
+  color: map.get($themeColor, foreground);
+
+  &:focus {
+    border: 1px solid black;
+  }
+
+  @media only screen and (width < 768px) {
+    & {
+      font-size: map.get($themeFontsize, base-input--sm);
+    }
+  }
+}
+
+button {
+  @include font-roboto(700);
+  font-size: map.get($themeFontsize, base-button);
+  inline-size: 100%;
+  border: 0px;
+  cursor: pointer;
+  padding: map.get($spacing, md);
+  border-radius: map.get($radius, lg);
+
+  @media only screen and (width < 768px) {
+    & {
+      font-size: map.get($themeFontsize, card-button--sm);
+    }
+  }
+}

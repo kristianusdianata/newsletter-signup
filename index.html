@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google font end -->
+
+    <!-- Css -->
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <!-- Js -->
+    <script defer src="./script/main.js"></script>
+
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <div class="wrapper">
+          <section class="slide--to-center" id="card__content">
+            <div class="card__wrapper active">
+              <div class="card">
+                <div class="card__img">
+                  <picture>
+                    <source
+                      media="(max-width:767.9px)"
+                      srcset="./assets/images/illustration-sign-up-mobile.svg"
+                    />
+                    <img
+                      src="./assets/images/illustration-sign-up-desktop.svg"
+                      alt="illustration image"
+                    />
+                  </picture>
+                </div>
+                <div class="card__content">
+                  <h1 class="title">Stay updated!</h1>
+                  <p class="subtitle">
+                    Join 60,000+ product managers receiving monthly update on:
+                  </p>
+                  <ul class="list">
+                    <li class="list__item">
+                      <img src="./assets/images/icon-list.svg" alt="" />
+                      <p>Product discovery and building what matters</p>
+                    </li>
+                    <li class="list__item">
+                      <img src="./assets/images/icon-list.svg" alt="" />
+                      <p>Measuring to ensure updates are a success</p>
+                    </li>
+                    <li class="list__item">
+                      <img src="./assets/images/icon-list.svg" alt="" />
+                      <p>And much more!</p>
+                    </li>
+                  </ul>
+
+                  <form id="form">
+                    <div>
+                      <label class="email__label" for="email"
+                        >Email address</label
+                      >
+                      <input
+                        class="email__input"
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="email@company.com"
+                      />
+                      <span
+                        class="error-message"
+                        aria-live="polite"
+                        id="email-error"
+                      ></span>
+                    </div>
+                    <button
+                      class="submit__button primary__button"
+                      type="submit"
+                    >
+                      Subscribe to monthly newsletter
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="notification__content" class="slide--to-right">
+            <div class="notification__wrapper">
+              <div class="notification">
+                <div class="message__container">
+                  <div>
+                    <img src="./assets/images/icon-success.svg" alt="" />
+                    <h1 class="title">Thanks for subscribing!</h1>
+                    <p class="subtitle">
+                      A confirmation email has been sent to
+                      ash@laremcompany.com. Please open it and click the button
+                      inside to confirm your subscription.
+                    </p>
+                  </div>
+                </div>
+                <div class="button__container">
+                  <div>
+                    <button class="dismiss__button primary__button">
+                      Dismiss message
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

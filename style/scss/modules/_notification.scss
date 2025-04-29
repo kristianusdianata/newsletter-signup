@@ -1,0 +1,58 @@
+@use "sass:map";
+@use "../abstracts/theme" as *;
+@use "../abstracts/variables" as *;
+
+%container {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification__wrapper {
+  display: none;
+
+  &.active {
+    display: block;
+    overflow: hidden;
+  }
+}
+
+.notification {
+  padding: map.get($spacing, 3xl);
+  max-inline-size: map.get($themeSize, notification);
+  display: grid;
+
+  @media only screen and (width < 768px) {
+    & {
+      max-inline-size: map.get($themeSize, card--sm);
+    }
+  }
+
+  @media only screen and (width <= 450px) {
+    & {
+      max-inline-size: 100%;
+      min-block-size: 100vh;
+    }
+  }
+
+  .message__container {
+    @extend %container;
+    justify-content: center;
+
+    .title {
+      margin-block-start: map.get($spacing, lg);
+    }
+
+    .subtitle {
+      margin-block-start: map.get($spacing, lg);
+    }
+  }
+
+  .button__container {
+    @extend %container;
+    justify-content: end;
+
+    button.dismiss__button {
+      margin-block-start: map.get($spacing, 2xl);
+    }
+  }
+}

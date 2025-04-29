@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "../abstracts/theme" as *;
+@use "../abstracts/variables" as *;
+
+.wrapper {
+  background-color: map.get($themeColor, background);
+  border-radius: map.get($radius, 2xl);
+  margin: map.get($spacing, md);
+  overflow: hidden;
+
+  @media only screen and (width <= 450px) {
+    & {
+      margin: 0px;
+      border-radius: 0px;
+    }
+  }
+}
