@@ -1,7 +1,5 @@
 @use "sass:map";
-@use "../abstracts/mixins" as *;
-@use "../abstracts/variables" as *;
-@use "../abstracts/theme" as *;
+@use "../abstracts/index" as *;
 
 html {
   font-size: 16px;

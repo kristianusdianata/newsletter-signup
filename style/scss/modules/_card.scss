@@ -1,7 +1,5 @@
 @use "sass:map";
-@use "../abstracts/variables" as *;
-@use "../abstracts/mixins" as *;
-@use "../abstracts/theme" as *;
+@use "../abstracts/index" as *;
 
 .card__wrapper {
   display: none;

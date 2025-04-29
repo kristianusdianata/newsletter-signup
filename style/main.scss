@@ -1,18 +1,14 @@
 // base
-@use "scss/base/reset";
-@use "scss/base/base";
+@use "scss/base/index" as base;
 
 // layout
-@use "scss/layout/container";
-@use "scss/layout/wrapper";
+@use "scss/layout/index" as layout;
 
 // component
-@use "scss/components/button";
-@use "scss/components/input";
+@use "scss/components/index" as component;
 
 // module
-@use "scss/modules/card";
-@use "scss/modules/notification";
+@use "scss/modules/index" as module;
 
 // transition
-@use "scss/transitions/slide";
+@use "scss/transitions/index" as transition;

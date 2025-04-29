@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../abstracts/theme" as *;
+@use "../abstracts/index" as *;
 
 .primary__button {
   background-color: map.get($themeColor, primary);
