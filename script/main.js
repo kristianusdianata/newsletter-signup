@@ -11,6 +11,7 @@ let notif_section = null;
 let notif_wrapper = null;
 let input_email = null;
 let error_message = null;
+let validated_email = null;
 const undefined_message = "Please enter your email address";
 const invalid_message = "Valid email required";
 
@@ -38,15 +39,17 @@ function resetErrorState() {
   error_message.innerText = "";
 }
 
-function showSuccessNotif() {
+function showSuccessNotif(validatedEmail) {
   card_wrapper.classList.remove("active");
   notif_wrapper.classList.add("active");
+  validated_email.innerText = validatedEmail;
 }
 
 function setDefaultState() {
   card_wrapper.classList.add("active");
   notif_wrapper.classList.remove("active");
   input_email.value = "";
+  validated_email.innerText = "";
   resetErrorState();
 }
 /** ------------- State function end ------------- */
@@ -100,7 +103,7 @@ function validationInput(input) {
     setErrorState(undefined_message); // Do something if input is undefined
   } else if (isValidEmail(newInput)) {
     // Do something if validation success
-    showSuccessNotif();
+    showSuccessNotif(newInput);
     setOnSuccessTransition();
   } else {
     setErrorState(invalid_message); // Do something if validation falied
@@ -150,6 +153,9 @@ function init() {
   );
   input_email = document.querySelector("form .email__input");
   error_message = document.querySelector("form .error-message");
+  validated_email = document.querySelector(
+    "section#notification__content .subtitle b"
+  );
 
   if (
     !form &&
