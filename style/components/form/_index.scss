@@ -1,0 +1,24 @@
+@use "placeholder/index" as *;
+
+.form {
+  @extend %base-form;
+
+  .form__container {
+    @extend %container-form;
+
+    .form__container-input {
+      @extend %container-form-input;
+
+      .form__input-label {
+        @extend %base-form-input-label;
+      }
+      .form__input-field {
+        @extend %base-form-input-field;
+      }
+
+      .form__input-error {
+        @extend %base-form-input-error;
+      }
+    }
+  }
+}

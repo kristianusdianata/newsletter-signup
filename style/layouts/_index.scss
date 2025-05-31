@@ -1,0 +1,10 @@
+@use "placeholder/index" as *;
+
+.container {
+  @extend %base-container;
+  @extend %container;
+}
+
+.container-flex-col {
+  @extend %container-flex;
+}

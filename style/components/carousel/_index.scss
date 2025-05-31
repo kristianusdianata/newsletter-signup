@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "../../abstracts/variables" as *;
+
+.carousel {
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+
+  .carousel__slider {
+    display: flex;
+    inline-size: 100%;
+    block-size: 100%;
+    align-items: center;
+    column-gap: map.get($spacing, 4);
+    padding: map.get($spacing, 2);
+
+    .carousel__item {
+      flex: 0 0 100%;
+    }
+  }
+}

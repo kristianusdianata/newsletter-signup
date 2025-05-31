@@ -1,0 +1,10 @@
+@use "./placeholder" as *;
+@use "./mixin" as *;
+
+.input {
+  @extend %base-input;
+
+  &.input--danger {
+    @include input-modifier(var(--red-100), var(--red), var(--red));
+  }
+}

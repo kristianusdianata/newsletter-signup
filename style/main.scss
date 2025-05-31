@@ -1,0 +1,14 @@
+// layout
+@use "./layouts/index" as layout;
+
+// base
+@use "./base/index" as base;
+
+// components
+@use "components/index" as component;
+
+// modules
+@use "./modules/index" as module;
+
+// utilities
+@use "./utilities/index" as util;

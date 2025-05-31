@@ -1,0 +1,18 @@
+%base-list {
+  inline-size: 100%;
+}
+
+%base-list-item {
+  inline-size: 100%;
+
+  &::before {
+    content: "";
+    display: block;
+    background: url(../../../../assets/images/icon-list.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    inline-size: 1.2em;
+    block-size: 1.2em;
+    flex-shrink: 0;
+  }
+}

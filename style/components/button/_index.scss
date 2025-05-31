@@ -1,0 +1,10 @@
+@use "./placeholder" as *;
+@use "./mixin" as *;
+
+.button {
+  @extend %base-button;
+
+  &.button--primary {
+    @include button-modifier(var(--blue-800), var(--white));
+  }
+}

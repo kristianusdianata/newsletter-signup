@@ -1,0 +1,96 @@
+@use "sass:map";
+@use "converter" as *;
+
+/* -------------- Break point modifier --------------*/
+$breakPoints: (
+  sm: px-to-em(600px),
+  md: px-to-em(992px),
+);
+
+/* -------------- Position --------------*/
+$positions: (start, center, end);
+
+/*
+-------------------------------------------------
+    Color
+-------------------------------------------------
+*/
+$colors: (
+  red: hsl(4, 100%, 67%),
+  red-100: hsl(356, 100%, 94%),
+  blue-800: hsl(234, 29%, 20%),
+  blue-700: hsl(235, 18%, 26%),
+  grey: hsl(0, 0%, 58%),
+  white: hsl(0, 0%, 100%),
+);
+
+/*
+-------------------------------------------------
+    Font size
+-------------------------------------------------
+*/
+$fontSize: (
+  fs-1: 0.5em,
+  fs-2: 0.75em,
+  fs-3: 1em,
+  fs-4: 1.25em,
+  fs-5: 1.5em,
+  fs-6: 1.75em,
+  fs-7: 2em,
+  fs-8: 2.5em,
+  fs-9: 3em,
+  fs-10: 3.5em,
+);
+
+$baseSpaceSize: 4px;
+
+/*
+-------------------------------------------------
+    Margin & padding
+-------------------------------------------------
+*/
+$spacing: (
+  0: 0,
+  1: px-to-em($baseSpaceSize * 1),
+  2: px-to-em($baseSpaceSize * 2),
+  3: px-to-em($baseSpaceSize * 3),
+  4: px-to-em($baseSpaceSize * 4),
+  5: px-to-em($baseSpaceSize * 5),
+  6: px-to-em($baseSpaceSize * 6),
+  8: px-to-em($baseSpaceSize * 8),
+  10: px-to-em($baseSpaceSize * 10),
+  12: px-to-em($baseSpaceSize * 12),
+  16: px-to-em($baseSpaceSize * 16),
+);
+
+/*
+-------------------------------------------------
+    Radius
+-------------------------------------------------
+*/
+$radius: (
+  br-0: 0,
+  br-1: px-to-em($baseSpaceSize * 0.5),
+  br-2: px-to-em($baseSpaceSize * 1),
+  br-3: px-to-em($baseSpaceSize * 2),
+  br-4: px-to-em($baseSpaceSize * 3),
+  br-5: px-to-em($baseSpaceSize * 4),
+  br-6: px-to-em($baseSpaceSize * 5),
+  br-7: px-to-em($baseSpaceSize * 6),
+  br-8: px-to-em($baseSpaceSize * 8),
+  br-full: 50%,
+);
+
+/*
+-------------------------------------------------
+    Font preset
+-------------------------------------------------
+*/
+$fontPreset: (
+  preset-1: (
+    size: map.get($fontSize, fs-2),
+  ),
+  preset-2: (
+    size: map.get($fontSize, fs-3),
+  ),
+);
