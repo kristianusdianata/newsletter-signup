@@ -224,7 +224,7 @@ h2 {
 .list .list__container .list__item::before {
   content: "";
   display: block;
-  background: url(../../../../assets/images/icon-list.svg);
+  background: url(/assets/images/icon-list.svg);
   background-size: contain;
   background-repeat: no-repeat;
   inline-size: 1.2em;
