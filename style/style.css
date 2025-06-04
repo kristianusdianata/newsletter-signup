@@ -212,6 +212,9 @@ h2 {
     grid-row: 1;
   }
 }
+.signup__title {
+  flex: 0 0 100%;
+}
 .signup__desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -219,6 +222,7 @@ h2 {
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+  flex: 0 0 100%;
 }
 .signup__list {
   margin-block-start: 1.5em;

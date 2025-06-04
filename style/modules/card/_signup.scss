@@ -53,11 +53,13 @@
 
   &__title {
     @extend %base-card-title;
+    flex: 0 0 100%;
   }
 
   &__desc {
     @extend %base-card-desc;
     @include line-clamp(2);
+    flex: 0 0 100%;
   }
 
   &__list {
