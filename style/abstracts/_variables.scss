@@ -80,17 +80,3 @@ $radius: (
   br-8: px-to-em($baseSpaceSize * 8),
   br-full: 50%,
 );
-
-/*
--------------------------------------------------
-    Font preset
--------------------------------------------------
-*/
-$fontPreset: (
-  preset-1: (
-    size: map.get($fontSize, fs-2),
-  ),
-  preset-2: (
-    size: map.get($fontSize, fs-3),
-  ),
-);

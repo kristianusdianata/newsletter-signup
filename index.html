@@ -25,128 +25,116 @@
     <link rel="stylesheet" href="./style/style.css" />
 
     <!-- Js -->
-    <script defer src="./script/index.js" type="module"></script>
+    <script src="./script/index.js" type="module"></script>
 
-    <title>
-      Frontend Mentor | Newsletter sign-up form with success message
-    </title>
+    <title>Frontend Mentor | Newsletter sign-up</title>
   </head>
-  <body class="bg-blue-700">
+  <body>
     <main>
       <article class="container">
         <div class="carousel">
           <div class="carousel__slider">
-            <div class="carousel__item" id="card-signup">
-              <section class="card-signup">
-                <div class="card-signup__container-body">
-                  <div class="card-signup__image">
-                    <picture>
-                      <source
-                        media="(min-width:62em)"
-                        srcset="
-                          ./assets/images/illustration-sign-up-desktop.svg
-                        "
-                      />
-                      <img
-                        src="./assets/images/illustration-sign-up-mobile.svg"
-                        alt="Illustration image"
-                      />
-                    </picture>
-                  </div>
+            <div class="carousel__item" id="signup">
+              <section class="signup is-active">
+                <div class="signup__image">
+                  <picture>
+                    <source
+                      media="(min-width:62em)"
+                      srcset="./assets/images/illustration-sign-up-desktop.svg"
+                    />
+                    <img
+                      src="./assets/images/illustration-sign-up-mobile.svg"
+                      alt="Illustration image"
+                    />
+                  </picture>
+                </div>
 
-                  <div class="card-signup__body">
-                    <header class="container-flex-col row-gap-6">
-                      <h1 class="blue-800 line-clamp-2">Stay updated!</h1>
-                      <p
-                        class="font-normal blue-800 font-preset-2 line-clamp-2"
-                      >
-                        Join 60,000+ product managers receiving monthly update
-                        on:
-                      </p>
-                    </header>
+                <div class="signup__body">
+                  <header class="signup__header">
+                    <h1 class="signup__title">Stay updated!</h1>
+                    <p class="signup__desc">
+                      Join 60,000+ product managers receiving monthly update on:
+                    </p>
+                  </header>
 
-                    <ul class="list mt-6">
-                      <div class="list__container">
-                        <li class="list__item">
-                          <p class="line-clamp-2 font-preset-2 font-normal">
-                            Product discovery and building what matters
-                          </p>
-                        </li>
-                        <li class="list__item">
-                          <p class="line-clamp-2 font-preset-2 font-normal">
-                            Measuring to ensure updates are a success
-                          </p>
-                        </li>
-                        <li class="list__item">
-                          <p class="line-clamp-2 font-preset-2 font-normal">
-                            And much more!
-                          </p>
-                        </li>
-                      </div>
+                  <div class="signup__list">
+                    <ul class="signup__list-group">
+                      <li class="signup__list-item">
+                        <span class="signup__list-icon"></span>
+                        <p class="signup__list-text">
+                          Product discovery and building what matters
+                        </p>
+                      </li>
+                      <li class="signup__list-item">
+                        <span class="signup__list-icon"></span>
+                        <p class="signup__list-text">
+                          Measuring to ensure updates are a success
+                        </p>
+                      </li>
+                      <li class="signup__list-item">
+                        <span class="signup__list-icon"></span>
+                        <p class="signup__list-text">And much more!</p>
+                      </li>
                     </ul>
-
-                    <form class="form mt-10" id="form">
-                      <div class="form__container">
-                        <div class="form__container-input">
-                          <label class="form__input-label" for="email"
-                            >Email address</label
-                          >
-                          <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            class="form__input-field input"
-                            placeholder="email@company.com"
-                          />
-                          <span
-                            class="form__input-error"
-                            aria-live="polite"
-                            id="email-error"
-                          ></span>
-                        </div>
-                        <button
-                          class="button button--primary font-preset-2 font-bold"
-                          type="submit"
-                        >
-                          <span class="line-clamp-2">
-                            Subscribe to monthly newsletter</span
-                          >
-                        </button>
-                      </div>
-                    </form>
                   </div>
+
+                  <form class="signup__form" id="form">
+                    <div class="signup__form-group">
+                      <label class="signup__form-label" for="email"
+                        >Email address</label
+                      >
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        tabindex="0"
+                        class="signup__form-input"
+                        placeholder="email@company.com"
+                      />
+                      <span
+                        class="signup__form-error"
+                        aria-live="polite"
+                        id="email-error"
+                      ></span>
+                    </div>
+                    <button
+                      class="signup__form-submit signup__form-submit--primary"
+                      type="submit"
+                      tabindex="0"
+                    >
+                      <span class="signup__form-submit-text">
+                        Subscribe to monthly newsletter</span
+                      >
+                    </button>
+                  </form>
                 </div>
               </section>
             </div>
 
             <div
-              class="carousel__item container-notification"
-              id="card-notification"
+              class="carousel__item container-success"
+              id="success"
+              aria-hidden="true"
             >
-              <section class="card-notification">
-                <div class="card-notification__container-body">
-                  <header class="container-flex-col row-gap-6">
-                    <div>
-                      <img
-                        src="./assets/images/icon-success.svg"
-                        alt=""
-                        style="inline-size: 4em"
-                      />
+              <section class="success">
+                <div class="success__body">
+                  <header class="success__header">
+                    <div class="success__icon">
+                      <img src="./assets/images/icon-success.svg" alt="" />
                     </div>
-                    <h2 class="blue-800 line-clamp-2">
-                      Thanks for subscribing!
-                    </h2>
-                    <p class="font-normal blue-800 font-preset-2 line-clamp-5">
+                    <h2 class="success__title">Thanks for subscribing!</h2>
+                    <p class="success__desc">
                       A confirmation email has been sent to
-                      <b></b> .Please open it and click the button inside to
+                      <b></b>. Please open it and click the button inside to
                       confirm your subscription.
                     </p>
                   </header>
                   <button
-                    class="button button--primary font-preset-2 font-bold mt-10"
+                    class="success__button success__button--primary"
                     type="button"
+                    tabindex="-1"
                   >
-                    <span class="line-clamp-2">Dismiss message</span>
+                    <span class="success__button-text">Dismiss message</span>
                   </button>
                 </div>
               </section>

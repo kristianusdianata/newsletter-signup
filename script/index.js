@@ -1,75 +1,58 @@
 import { carousel, validation } from "./handler/index.js";
+import { signupCard } from "./signupCard.js";
+import { successCard } from "./successCard.js";
+import { helper } from "./helper.js";
 
-function myCard() {
-  const signup_card = document.querySelector(".card-signup");
-  const signup_form = signup_card.querySelector(".card-signup__body .form");
-  const signup_input_field = signup_form.querySelector(".form__input-field");
-  const signup_error_label = signup_form.querySelector(".form__input-error");
+function main() {
+  const mySignupCard = signupCard();
+  const mySuccessCard = successCard();
+  const myCarousel = carousel();
+  const myHelper = helper();
+  const myValidate = validation();
 
-  const notification_card = document.querySelector(".card-notification");
-  const notfication_confirm_button = notification_card.querySelector(
-    ".button[type=button]"
-  );
-  const validated_email_label = notification_card.querySelector("header p b");
+  const signupForm = mySignupCard.getSubmitForm();
+  const signupInputField = mySignupCard.getInputField();
+  const successConfirmBUtton = mySuccessCard.getConfirmButton();
 
-  const carouselCard = carousel();
-  const validate = validation();
-
-  function initialState() {
-    signup_error_label.innerHTML = "";
-    if (signup_input_field.classList.contains("input--danger")) {
-      signup_input_field.classList.remove("input--danger");
-    }
-    signup_input_field.value = "";
-    validated_email_label.innerHTML = "";
-  }
-
-  function validateAsync(email) {
-    return new Promise((resolve, reject) => {
-      validate.email(
-        email,
-        (validatedEmail) => resolve(validatedEmail),
-        (message) => reject(message)
-      );
-    });
-  }
-
-  function onSubmitForm() {
-    signup_form.addEventListener("submit", async function (e) {
+  function onSignupSubmit() {
+    signupForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const email = signup_input_field.value;
+      const email = signupInputField.value.toString().replace(/\s+/g, "");
 
       try {
-        const response = await validateAsync(
-          email.toString().replace(/\s+/g, "")
-        );
+        const response = await myHelper.asyncCallback((resolve, reject) => {
+          myValidate.email(
+            email,
+            (validatedEmail) => resolve(validatedEmail),
+            (message) => reject(message)
+          );
+        });
 
-        initialState();
-        validated_email_label.innerHTML = response;
-        await carouselCard.slideToIndex(1);
+        mySignupCard.onHide();
+        mySuccessCard.onShow(response);
+        await myCarousel.slideToIndex(1);
       } catch (errorMsg) {
-        initialState();
-        signup_input_field.classList.add("input--danger");
-        signup_input_field.value = email;
-        signup_error_label.innerHTML = errorMsg;
+        mySignupCard.onError(errorMsg, email);
       }
     });
   }
 
-  function onNotificationConfirm() {
-    notfication_confirm_button.addEventListener("click", async function (e) {
+  function onSuccessConfirm() {
+    successConfirmBUtton.addEventListener("click", async function (e) {
       e.preventDefault();
-      initialState();
-      await carouselCard.slideToIndex(0);
+      mySuccessCard.onHide();
+      mySignupCard.onShow();
+      await myCarousel.slideToIndex(0);
     });
   }
+
   return {
-    onSubmitForm,
-    onNotificationConfirm,
+    onSignupSubmit,
+    onSuccessConfirm,
   };
 }
 
-const card = myCard();
-card.onSubmitForm();
-card.onNotificationConfirm();
+const myMain = main();
+myMain.onSignupSubmit();
+myMain.onSuccessConfirm();

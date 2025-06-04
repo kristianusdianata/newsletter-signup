@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+@mixin button-modifier($background-color: black, $text-color: white) {
+  background-color: $background-color;
+  @include font-preset-2($color: $text-color, $fontWeight: 700);
+
+  &:hover {
+    background: linear-gradient(to right, #ff527b, #ff6a3a);
+    box-shadow: hsl(4, 100%, 67%) 0px 22px 25px -13px;
+  }
+}
+
+@mixin button() {
+  display: block;
+  text-align: center;
+  padding: map.get($spacing, 4);
+  border-radius: map.get($radius, br-3);
+  inline-size: 100%;
+
+  &-text {
+    @include line-clamp(2);
+  }
+
+  &--primary {
+    @include button-modifier(
+      $background-color: var(--blue-800),
+      $text-color: var(--white)
+    );
+  }
+}

@@ -1,10 +1,21 @@
-@use "placeholder/index" as *;
+@use "sass:map";
+@use "../abstracts/index" as *;
 
 .container {
-  @extend %base-container;
-  @extend %container;
-}
+  display: flex;
+  align-items: center;
+  inline-size: 100vw;
+  min-block-size: 100vh;
+  overflow: hidden;
 
-.container-flex-col {
-  @extend %container-flex;
+  @media only screen and (min-width: map.get($breakPoints, sm)) {
+    inline-size: auto;
+    max-inline-size: px-to-em(600px);
+    margin: map.get($spacing, 4);
+  }
+
+  @media only screen and (min-width: map.get($breakPoints, md)) {
+    max-inline-size: px-to-em(880px);
+    margin: map.get($spacing, 0);
+  }
 }

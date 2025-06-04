@@ -1,0 +1,36 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+@mixin form() {
+  inline-size: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: map.get($spacing, 6);
+
+  &-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: map.get($spacing, 2);
+    flex: 0 0 100%;
+  }
+
+  &-label {
+    @include line-clamp(1);
+    @include font-preset-1($color: var(--blue-800), $fontWeight: 700);
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &-input {
+    @include font-preset-2($color: var(--blue-800), $fontWeight: 400);
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+
+  &-error {
+    text-align: end;
+    @include font-preset-1($color: var(--red), $fontWeight: 700);
+    grid-column: 2;
+    grid-row: 1;
+  }
+}

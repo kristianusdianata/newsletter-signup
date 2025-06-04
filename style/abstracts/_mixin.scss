@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "variables" as *;
+
 @mixin line-clamp($line) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -5,4 +8,22 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: $line;
   line-clamp: $line;
+}
+
+@mixin font-color($color) {
+  @if ($color != "") {
+    color: $color;
+  }
+}
+
+@mixin font-preset-1($color: "", $fontWeight: 400) {
+  font-size: map.get($fontSize, fs-2);
+  font-weight: $fontWeight;
+  @include font-color($color);
+}
+
+@mixin font-preset-2($color: "", $fontWeight: 400) {
+  font-size: map.get($fontSize, fs-3);
+  font-weight: $fontWeight;
+  @include font-color($color);
 }

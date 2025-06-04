@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "../../abstracts/index" as *;
+
+%base-card {
+  block-size: 100%;
+  border-radius: map.get($radius, 0);
+  background-color: var(--white);
+
+  @media only screen and (min-width: map.get($breakPoints, sm)) {
+    border-radius: map.get($radius, br-8);
+  }
+
+  @media only screen and (min-width: map.get($breakPoints, md)) {
+    block-size: auto;
+  }
+}
+
+%layout-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: map.get($spacing, 6);
+}
+
+%base-card-title {
+  color: var(--blue-800);
+  @include line-clamp(2);
+}
+
+%base-card-desc {
+  @include font-preset-2($color: var(--blue-800), $fontWeight: 400);
+}

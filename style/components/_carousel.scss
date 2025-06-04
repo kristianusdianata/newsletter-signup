@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+.carousel {
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+
+  &__slider {
+    inline-size: 100%;
+    block-size: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    flex: 0 0 100%;
+    padding: map.get($spacing, 0);
+
+    @media only screen and (min-width: map.get($breakPoints, sm)) {
+      padding: map.get($spacing, 2);
+    }
+  }
+}

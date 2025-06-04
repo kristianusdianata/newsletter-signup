@@ -1,0 +1,34 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+@mixin input-modifier(
+  $background-color: white,
+  $text-color: black,
+  $border-color: black
+) {
+  border: 1px solid $border-color;
+  background-color: $background-color;
+  color: $text-color;
+
+  &:focus {
+    border: 1px solid $border-color;
+  }
+}
+
+@mixin input() {
+  padding: map.get($spacing, 3);
+  border: 1px solid var(--grey);
+  border-radius: map.get($radius, br-3);
+
+  &:focus {
+    border: 1px solid var(--blue-800);
+  }
+
+  &--danger {
+    @include input-modifier(
+      $background-color: var(--red-100),
+      $text-color: var(--red),
+      $border-color: var(--red)
+    );
+  }
+}
