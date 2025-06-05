@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../abstracts/index" as *;
+@use "./input" as *;
 
 @mixin form() {
   inline-size: 100%;
@@ -25,6 +26,7 @@
     @include font-preset-2($color: var(--blue-800), $fontWeight: 400);
     grid-column: 1 / span 2;
     grid-row: 2;
+    @include input();
   }
 
   &-error {

@@ -71,10 +71,6 @@
     margin-block-start: map.get($spacing, 10);
     @include form();
 
-    &-input {
-      @include input();
-    }
-
     &-submit {
       @include button();
     }
