@@ -9,11 +9,11 @@
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
 
-  @media only screen and (min-width: map.get($breakPoints, sm)) {
+  @include media-query-sm() {
     padding: map.get($spacing, 6);
   }
 
-  @media only screen and (min-width: map.get($breakPoints, md)) {
+  @include media-query-md() {
     grid-template-columns: 50% 45%;
     align-items: center;
     justify-content: space-between;
@@ -24,11 +24,11 @@
     grid-column: 1;
     grid-row: 1;
 
-    @media only screen and (min-width: map.get($breakPoints, sm)) {
+    @include media-query-sm() {
       border-radius: map.get($radius, br-6);
     }
 
-    @media only screen and (min-width: map.get($breakPoints, md)) {
+    @include media-query-md() {
       grid-column: 2;
       grid-row: 1;
     }
@@ -40,7 +40,7 @@
     grid-column: 1;
     grid-row: 2;
 
-    @media only screen and (min-width: map.get($breakPoints, md)) {
+    @include media-query-md() {
       padding-block: map.get($spacing, 0);
       grid-column: 1;
       grid-row: 1;
@@ -53,13 +53,11 @@
 
   &__title {
     @extend %base-card-title;
-    flex: 0 0 100%;
   }
 
   &__desc {
     @extend %base-card-desc;
     @include line-clamp(2);
-    flex: 0 0 100%;
   }
 
   &__list {

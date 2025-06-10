@@ -6,18 +6,18 @@
   border-radius: map.get($radius, 0);
   background-color: var(--white);
 
-  @media only screen and (min-width: map.get($breakPoints, sm)) {
+  @include media-query-sm() {
     border-radius: map.get($radius, br-8);
   }
 
-  @media only screen and (min-width: map.get($breakPoints, md)) {
+  @include media-query-md() {
     block-size: auto;
   }
 }
 
 %layout-card-header {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   row-gap: map.get($spacing, 6);
 }
 

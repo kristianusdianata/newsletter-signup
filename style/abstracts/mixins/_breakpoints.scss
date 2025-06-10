@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "../functions/index" as *;
+
+$breakPoints: (
+  sm: px-to-rem(600px),
+  md: px-to-rem(992px),
+);
+
+@mixin media-query-sm() {
+  @at-root {
+    @media (min-width: map.get($breakPoints, sm)) {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin media-query-md() {
+  @at-root {
+    @media (min-width: map.get($breakPoints, md)) {
+      & {
+        @content;
+      }
+    }
+  }
+}

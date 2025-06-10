@@ -2,6 +2,12 @@
 
 $baseFontSize: 16px;
 
+@function px-to-rem($px) {
+  $value: math.div($px, $baseFontSize) * 1rem;
+  $rounded: math.div(math.round($value * 100), 100);
+  @return $rounded;
+}
+
 @function px-to-em($px) {
   $value: math.div($px, $baseFontSize) * 1em;
   $rounded: math.div(math.round($value * 100), 100);

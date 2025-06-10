@@ -7,11 +7,6 @@ html {
 
 h1,
 h2 {
-  font-size: map.get($fontSize, fs-8);
   line-height: 1.1;
-  font-weight: 700;
-
-  @media only screen and (min-width: map.get($breakPoints, sm)) {
-    font-size: map.get($fontSize, fs-10);
-  }
+  @include font-heading-1($fontWeight: 700);
 }

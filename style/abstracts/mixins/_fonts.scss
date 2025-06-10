@@ -1,0 +1,63 @@
+@use "sass:map";
+@use "./breakpoints" as *;
+
+$fontSize: (
+  fs-1: 0.5rem,
+  fs-2: 0.75rem,
+  fs-3: 1rem,
+  fs-4: 1.25rem,
+  fs-5: 1.5rem,
+  fs-6: 1.75rem,
+  fs-7: 2rem,
+  fs-8: 2.5rem,
+  fs-9: 3rem,
+  fs-10: 3.5rem,
+);
+
+@function font-color($color) {
+  @if ($color != "") {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@mixin font-style($color, $fontWeight, $font-size) {
+  font-size: $font-size;
+  font-weight: $fontWeight;
+  @if (font-color($color)) {
+    color: $color;
+  }
+}
+
+@mixin font-heading-1($color: "", $fontWeight: 400) {
+  @include font-style(
+    $color: $color,
+    $fontWeight: $fontWeight,
+    $font-size: map.get($fontSize, fs-8)
+  );
+
+  @include media-query-sm() {
+    @include font-style(
+      $color: $color,
+      $fontWeight: $fontWeight,
+      $font-size: map.get($fontSize, fs-10)
+    );
+  }
+}
+
+@mixin font-preset-1($color: "", $fontWeight: 400) {
+  @include font-style(
+    $color: $color,
+    $fontWeight: $fontWeight,
+    $font-size: map.get($fontSize, fs-2)
+  );
+}
+
+@mixin font-preset-2($color: "", $fontWeight: 400) {
+  @include font-style(
+    $color: $color,
+    $fontWeight: $fontWeight,
+    $font-size: map.get($fontSize, fs-3)
+  );
+}

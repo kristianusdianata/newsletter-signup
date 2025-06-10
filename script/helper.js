@@ -1,23 +1,22 @@
 export function helper() {
-  function stateCallback(state, onTrueState, onFalseState) {
-    if (state && onTrueState) onTrueState();
-    else if (!state && onFalseState) onFalseState();
-  }
-
   function asyncCallback(callback) {
     return new Promise((resolve, reject) => {
       callback(resolve, reject);
     });
   }
 
-  function updateAttribute(element, attribute, callback) {
-    if (
-      element &&
-      attribute &&
-      callback &&
-      element.hasAttribute(`${attribute}`)
-    ) {
-      callback();
+  function updateAttribute(
+    element,
+    attribute,
+    onRemoveCallback,
+    onCreateCallback
+  ) {
+    if (element && attribute) {
+      if (onRemoveCallback && element.hasAttribute(`${attribute}`)) {
+        onRemoveCallback();
+      } else if (onCreateCallback && !element.hasAttribute(`${attribute}`)) {
+        onCreateCallback();
+      }
     }
   }
 
@@ -32,7 +31,6 @@ export function helper() {
   return {
     updateAttribute,
     updateClass,
-    stateCallback,
     asyncCallback,
   };
 }

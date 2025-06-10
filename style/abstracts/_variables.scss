@@ -1,14 +1,5 @@
 @use "sass:map";
-@use "converter" as *;
-
-/* -------------- Break point modifier --------------*/
-$breakPoints: (
-  sm: px-to-em(600px),
-  md: px-to-em(992px),
-);
-
-/* -------------- Position --------------*/
-$positions: (start, center, end);
+@use "functions/index" as *;
 
 /*
 -------------------------------------------------
@@ -22,24 +13,6 @@ $colors: (
   blue-700: hsl(235, 18%, 26%),
   grey: hsl(0, 0%, 58%),
   white: hsl(0, 0%, 100%),
-);
-
-/*
--------------------------------------------------
-    Font size
--------------------------------------------------
-*/
-$fontSize: (
-  fs-1: 0.5em,
-  fs-2: 0.75em,
-  fs-3: 1em,
-  fs-4: 1.25em,
-  fs-5: 1.5em,
-  fs-6: 1.75em,
-  fs-7: 2em,
-  fs-8: 2.5em,
-  fs-9: 3em,
-  fs-10: 3.5em,
 );
 
 $baseSpaceSize: 4px;
@@ -70,13 +43,13 @@ $spacing: (
 */
 $radius: (
   br-0: 0,
-  br-1: px-to-em($baseSpaceSize * 0.5),
-  br-2: px-to-em($baseSpaceSize * 1),
-  br-3: px-to-em($baseSpaceSize * 2),
-  br-4: px-to-em($baseSpaceSize * 3),
-  br-5: px-to-em($baseSpaceSize * 4),
-  br-6: px-to-em($baseSpaceSize * 5),
-  br-7: px-to-em($baseSpaceSize * 6),
-  br-8: px-to-em($baseSpaceSize * 8),
+  br-1: calc($baseSpaceSize * 0.5),
+  br-2: calc($baseSpaceSize * 1),
+  br-3: calc($baseSpaceSize * 2),
+  br-4: calc($baseSpaceSize * 3),
+  br-5: calc($baseSpaceSize * 4),
+  br-6: calc($baseSpaceSize * 5),
+  br-7: calc($baseSpaceSize * 6),
+  br-8: calc($baseSpaceSize * 8),
   br-full: 50%,
 );

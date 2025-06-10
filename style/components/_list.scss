@@ -6,7 +6,7 @@
 
   &-group {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     row-gap: map.get($spacing, 2);
   }
 
@@ -14,7 +14,6 @@
     display: inline-flex;
     align-items: start;
     column-gap: map.get($spacing, 4);
-    flex: 0 0 100%;
   }
 
   &-icon {
@@ -23,12 +22,11 @@
     background-repeat: no-repeat;
     inline-size: 1.2em;
     block-size: 1.2em;
-    flex: 0 0 auto;
+    flex-shrink: 0;
   }
 
   &-text {
     @include line-clamp(2);
     @include font-preset-2($color: var(--blue-80), $fontWeight: 400);
-    flex: 1 1 auto;
   }
 }
