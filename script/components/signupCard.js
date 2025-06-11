@@ -1,5 +1,6 @@
-import { helper } from "../helper.js";
 import { validation, carousel } from "../handlers/index.js";
+import { attributeHandler } from "./core.js";
+import { helper } from "../helper.js";
 
 export function signupCard() {
   const carouselItem = document.querySelector(".carousel__item#signup");
@@ -10,10 +11,13 @@ export function signupCard() {
 
   const errorClass = "signup__form-input--danger";
   const activeClass = "is-active";
+  const targetAttr = "inert";
 
   const helperFunc = helper();
   const validationFunc = validation();
   const carouselFunc = carousel();
+  const carouselAttrHandler = attributeHandler(carouselItem);
+  const inputAttrHandler = attributeHandler(signupInput);
 
   let isError = false;
   let isActive = true;
@@ -42,22 +46,12 @@ export function signupCard() {
       () => {
         signupErrorLabel.innerHTML = errorMsg;
         signupInput.value = email;
-        helperFunc.updateClass(
-          signupInput,
-          errorClass,
-          () => {},
-          () => signupInput.classList.add(errorClass)
-        );
+        inputAttrHandler.addClass(errorClass);
       },
       () => {
         signupErrorLabel.innerHTML = "";
         signupInput.value = "";
-        helperFunc.updateClass(
-          signupInput,
-          errorClass,
-          () => signupInput.classList.remove(errorClass),
-          () => {}
-        );
+        inputAttrHandler.removeClass(errorClass);
       }
     );
   }
@@ -65,20 +59,10 @@ export function signupCard() {
   function updateActiveClass() {
     onActiveCallback(
       () => {
-        helperFunc.updateClass(
-          signupCard,
-          activeClass,
-          () => {},
-          () => signupCard.classList.add(activeClass)
-        );
+        carouselAttrHandler.addClass(activeClass);
       },
       () => {
-        helperFunc.updateClass(
-          signupCard,
-          activeClass,
-          () => signupCard.classList.remove(activeClass),
-          () => {}
-        );
+        carouselAttrHandler.removeClass(activeClass);
       }
     );
   }
@@ -86,24 +70,10 @@ export function signupCard() {
   function updateAttribute() {
     onActiveCallback(
       () => {
-        helperFunc.updateAttribute(
-          carouselItem,
-          "inert",
-          () => {
-            carouselItem.removeAttribute("inert");
-          },
-          () => {}
-        );
+        carouselAttrHandler.removeAttribute(targetAttr);
       },
       () => {
-        helperFunc.updateAttribute(
-          carouselItem,
-          "aria-hidden",
-          () => {},
-          () => {
-            carouselItem.setAttribute("inert", "");
-          }
-        );
+        carouselAttrHandler.addAttribute(targetAttr);
       }
     );
   }

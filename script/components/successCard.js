@@ -1,5 +1,5 @@
-import { helper } from "../helper.js";
 import { carousel } from "../handlers/index.js";
+import { attributeHandler } from "./core.js";
 
 export function successCard() {
   const carouselItem = document.querySelector(".carousel__item#success");
@@ -8,9 +8,10 @@ export function successCard() {
   const validatedEmailLabel = sucessCard.querySelector(".success__desc b");
 
   const activeClass = "is-active";
+  const targetAttr = "inert";
 
-  const helperFunc = helper();
   const carouselFunc = carousel();
+  const carouselAttrHandler = attributeHandler(carouselItem);
 
   let isActive = false;
   let email = "";
@@ -43,47 +44,15 @@ export function successCard() {
 
   function updateActiveClass() {
     onActiveCallback(
-      () => {
-        helperFunc.updateClass(
-          sucessCard,
-          activeClass,
-          () => {},
-          () => sucessCard.classList.add(activeClass)
-        );
-      },
-      () => {
-        helperFunc.updateClass(
-          sucessCard,
-          activeClass,
-          () => sucessCard.classList.remove(activeClass),
-          () => {}
-        );
-      }
+      () => carouselAttrHandler.addClass(activeClass),
+      () => carouselAttrHandler.removeClass(activeClass)
     );
   }
 
   function updateAttribute() {
     onActiveCallback(
-      () => {
-        helperFunc.updateAttribute(
-          carouselItem,
-          "inert",
-          () => {
-            carouselItem.removeAttribute("inert");
-          },
-          () => {}
-        );
-      },
-      () => {
-        helperFunc.updateAttribute(
-          carouselItem,
-          "aria-hidden",
-          () => {},
-          () => {
-            carouselItem.setAttribute("inert", "");
-          }
-        );
-      }
+      () => carouselAttrHandler.removeAttribute(targetAttr),
+      () => carouselAttrHandler.addAttribute(targetAttr)
     );
   }
 
