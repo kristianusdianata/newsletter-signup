@@ -16,9 +16,25 @@ export function successCard() {
   let isActive = false;
   let email = "";
 
-  function onActiveCallback(onTrueCallback, onFalseCallback) {
-    if (isActive && email && onTrueCallback) onTrueCallback();
-    else if (!isActive && !email && onFalseCallback) onFalseCallback();
+  function callback(activeState, email) {
+    const activeState_ = activeState;
+    const email_ = email;
+
+    /**
+     * true : activeState_ && email_
+     * false : !activeState_ && !email_
+     */
+    let screenIsActive = false;
+
+    if (activeState_ && email_) screenIsActive = true;
+    else if (!activeState_ && !email_) screenIsActive = false;
+
+    function isActive(onTrueCallback, onFalseCallback) {
+      if (screenIsActive && onTrueCallback) onTrueCallback();
+      else if (!screenIsActive && onFalseCallback) onFalseCallback();
+    }
+
+    return { isActive };
   }
 
   function updateState(isActive_, email_) {
@@ -32,7 +48,8 @@ export function successCard() {
   }
 
   function updateElement() {
-    onActiveCallback(
+    const callbackHandler = callback(isActive, email);
+    callbackHandler.isActive(
       () => {
         validatedEmailLabel.innerHTML = email;
       },
@@ -43,14 +60,16 @@ export function successCard() {
   }
 
   function updateActiveClass() {
-    onActiveCallback(
+    const callbackHandler = callback(isActive, email);
+    callbackHandler.isActive(
       () => carouselAttrHandler.addClass(activeClass),
       () => carouselAttrHandler.removeClass(activeClass)
     );
   }
 
   function updateAttribute() {
-    onActiveCallback(
+    const callbackHandler = callback(isActive, email);
+    callbackHandler.isActive(
       () => carouselAttrHandler.removeAttribute(targetAttr),
       () => carouselAttrHandler.addAttribute(targetAttr)
     );
@@ -76,7 +95,8 @@ export function successCard() {
     successButton.addEventListener("click", function (e) {
       e.preventDefault();
 
-      onActiveCallback(
+      const callbackHandler = callback(isActive, email);
+      callbackHandler.isActive(
         async () => {
           await onHide(callbackSignup);
         },

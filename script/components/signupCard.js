@@ -22,14 +22,24 @@ export function signupCard() {
   let isError = false;
   let isActive = true;
 
-  function onActiveCallback(onTrueCallback, onFalseCallback) {
-    if (isActive && onTrueCallback) onTrueCallback();
-    else if (!isActive && onFalseCallback) onFalseCallback();
-  }
+  function callback(activeState) {
+    const activeState_ = activeState;
 
-  function onErrorCallback(onTrueCallback, onFalseCallback) {
-    if (isActive && isError && onTrueCallback) onTrueCallback();
-    else if (isActive && !isError && onFalseCallback) onFalseCallback();
+    function isActive(onTrueCallback, onFalseCallback) {
+      if (activeState_ && onTrueCallback) onTrueCallback();
+      else if (!activeState_ && onFalseCallback) onFalseCallback();
+    }
+
+    function isError(errorState, onTrueCallback, onFalseCallback) {
+      const errorState_ = errorState;
+
+      if (!activeState_) return;
+
+      if (errorState_ && onTrueCallback) onTrueCallback();
+      else if (!errorState_ && onFalseCallback) onFalseCallback();
+    }
+
+    return { isActive, isError };
   }
 
   function updateState(isActive_, isError_) {
@@ -42,7 +52,9 @@ export function signupCard() {
   }
 
   function updateElement(errorMsg = "", email = "") {
-    onErrorCallback(
+    const callbackHandler = callback(isActive);
+    callbackHandler.isError(
+      isError,
       () => {
         signupErrorLabel.innerHTML = errorMsg;
         signupInput.value = email;
@@ -57,7 +69,8 @@ export function signupCard() {
   }
 
   function updateActiveClass() {
-    onActiveCallback(
+    const callbackHandler = callback(isActive);
+    callbackHandler.isActive(
       () => {
         carouselAttrHandler.addClass(activeClass);
       },
@@ -68,7 +81,8 @@ export function signupCard() {
   }
 
   function updateAttribute() {
-    onActiveCallback(
+    const callbackHandler = callback(isActive);
+    callbackHandler.isActive(
       () => {
         carouselAttrHandler.removeAttribute(targetAttr);
       },
@@ -117,7 +131,8 @@ export function signupCard() {
     signupForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      onActiveCallback(
+      const callbackHandler = callback(isActive);
+      callbackHandler.isActive(
         async () => {
           const email = signupInput.value.toString().replace(/\s+/g, "");
           await submitHandler(email, callbackSuccess);
