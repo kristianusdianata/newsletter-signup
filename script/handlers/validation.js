@@ -21,15 +21,11 @@ export function validation() {
       errMsg = "Please enter your email address";
     }
 
-    if (errMsg) {
+    if (errMsg && onErrorCallback) {
       validate.isError(true);
-      if (onErrorCallback) validate.errorHandler(errMsg, onErrorCallback);
-      else {
-        validate.isError(false);
-        console.error("onErrorCallback is missing");
-      }
-    } else {
-      if (onSuccessCallback) onSuccessCallback(email);
+      validate.errorHandler(errMsg, onErrorCallback);
+    } else if (!errMsg && onSuccessCallback) {
+      onSuccessCallback(email);
     }
   }
 

@@ -1,4 +1,4 @@
-import { signupCard } from "./signupCard.js";
-import { successCard } from "./successCard.js";
+import { main as signup } from "./signup/index.js";
+import { main as success } from "./success/index.js";
 
-export { signupCard, successCard };
+export { signup, success };

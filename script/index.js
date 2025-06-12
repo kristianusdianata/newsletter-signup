@@ -1,15 +1,15 @@
-import { signupCard, successCard } from "./components/index.js";
+import { signup, success } from "./components/index.js";
 
 function main() {
-  const singupCardComponent = signupCard();
-  const successCardComponent = successCard();
+  const singupCard = signup();
+  const successCard = success();
 
   function signupOnSubmit() {
-    singupCardComponent.onSubmit(successCardComponent.onShow);
+    singupCard.onSubmit(successCard.onShow);
   }
 
   function successCardOnConfirm() {
-    successCardComponent.onConfirm(singupCardComponent.onShow);
+    successCard.onConfirm(singupCard.onShow);
   }
 
   return {
@@ -18,6 +18,6 @@ function main() {
   };
 }
 
-const signupPage = main();
-signupPage.signupOnSubmit();
-signupPage.successCardOnConfirm();
+const page = main();
+page.signupOnSubmit();
+page.successCardOnConfirm();
